@@ -1,18 +1,45 @@
 ---
 layout: default
-title: Bienvenido
+title: Eric – Gameplay Programmer
 ---
 
-# ¡Hola! Soy Eric 👋
+# 🎮 Eric – Gameplay Programmer
 
-Soy estudiante de Ingeniería Informática a punto de graduarme, con gran pasión por el desarrollo de videojuegos. Me especializo en la programación de mecánicas y lógica de juego.
+Aspiring gameplay programmer with a strong passion for game mechanics and interactive systems. I'm finishing my degree in Computer Engineering and have been creating small games and prototypes on my own to grow my skills and express ideas through gameplay.
 
-## Proyectos
+---
 
-Pronto añadiré algunos de mis proyectos personales en C++ y otros motores.
+## 🚀 Featured Projects
 
-## Contacto
+### 🔧 [Knightmare](https://ericux.itch.io/knightmare)
+Short description of your personal C++ project. Mention what it does and what your contribution was.
 
-- [GitHub](https://github.com/emr81-ua)
-- [LinkedIn](www.linkedin.com/in/eric-muñoz-rouillion-3a303a1b2)
-- Email: ericux4@gmail.com
+- **Language:** C++
+- **Technologies:** SDL2 / SFML / OpenGL / etc.
+- **Highlights:** Implemented [X mechanic], in-game UI, or custom logic
+- 🔗 [Source Code on GitHub](https://github.com/yourusername/project-example)
+
+<!-- You can duplicate this section for each project -->
+
+---
+
+## 👤 About Me
+
+- 🎓 Soon-to-be Computer Engineering graduate
+- 🕹️ Passionate about gameplay programming and systems design
+- 💡 I love building mechanics from scratch and solving technical challenges
+- ✨ Always curious and eager to grow in the game industry
+
+---
+
+## 📬 Contact
+
+- 📧 **Email:** ericux4@gmail.com 
+- 🐙 **GitHub:** [@emr81-ua](https://github.com/emr81-ua)  
+- 💼 **LinkedIn:** (www.linkedin.com/in/eric-muñoz-rouillion-3a303a1b2)
+
+<!-- Optional: add your resume -->
+<!-- 📄 [View Resume (PDF)](https://link-to-your-resume.com) -->
+
+---
+
