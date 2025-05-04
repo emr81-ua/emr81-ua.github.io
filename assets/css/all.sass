@@ -1,18 +1,58 @@
 ---
----
+// Hoja de estilos principal – all.sass
+// Estructura basada en sistema de carpetas por secciones
 
 //------------------------------------------------
-// Set some colors as sass variables
+// 🎨 Variables de color (personaliza aquí)
 
-$accent-color: #BD5248
-$accent: #c99065
+$accent-color: #FF6B6B
+$accent: #FF886B
 $accent-light: adjust-hue(saturate(lighten($accent, 11%), 12.6%), 14%)
 $selectionColor: lighten($accent, 30%)
 
-$textColor: #666
-$headlineColor: #333
-$bgcolor: #e5eaee
-$documentBackgroundColor: #fff
+$textColor: #e0e0e0
+$headlineColor: #ffffff
+$bgcolor: #121212
+$documentBackgroundColor: #1e1e1e
+
+//------------------------------------------------
+// 🖼️ Estilo base de fondo y texto
+
+body
+  background-color: $bgcolor
+  color: $textColor
+  font-family: 'Open Sans', sans-serif
+  line-height: 1.6
+  margin: 0
+  padding: 0
+
+//------------------------------------------------
+// 🧠 Selección de texto personalizada
+
+::selection
+  background: $selectionColor
+  color: $headlineColor
+
+//------------------------------------------------
+// 🔤 Encabezados
+
+h1, h2, h3, h4, h5, h6
+  color: $headlineColor
+  margin-top: 1.5rem
+  margin-bottom: 1rem
+
+//------------------------------------------------
+// 📎 Enlaces
+
+a
+  color: $accent-color
+  text-decoration: none
+
+a:hover
+  text-decoration: underline
+
+//------------------------------------------------
+// 📦 Importación de módulos
 
 @import '1-tools/-tools-dir'
 @import '2-base/-base-dir'
