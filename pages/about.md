@@ -1,9 +1,40 @@
 ---
-layout: page
-title: About
-permalink: /about
+layout: default
+title: Eric – Gameplay Programmer
 ---
 
-# Portfolio Jekyll Theme
+# 🎮 Eric – Gameplay Programmer
 
-This is a personal portfolio theme that I built from the ground up, using the [DevTips Starter Kit](http://devtipsstarterkit.com/) as a foundation for starting, and following closely the amazing tutorial by [Travis Neilson over at DevTips](https://www.youtube.com/watch?v=T6jKLsxbFg4&list=PL0CB3OvPhDA_STygmp3sDenx3UpdOMk7P). You can [check out the demo](lenpaul.github.io/portfolio-jekyll-theme/), and [fork the repository](https://github.com/LeNPaul/portfolio-jekyll-theme/fork), to get started.
+Aspiring gameplay programmer with a strong passion for game mechanics and interactive systems. I'm finishing my degree in Computer Engineering and have been creating small games and prototypes on my own to grow my skills and express ideas through gameplay.
+
+---
+
+## 🚀 Featured Projects
+
+### 🔧 [Project Name](https://github.com/yourusername/project-example)
+Short description of your personal C++ project. Mention what it does and what your contribution was.
+
+- **Language:** C++
+- **Technologies:** SDL2 / SFML / OpenGL / etc.
+- **Highlights:** Implemented [X mechanic], in-game UI, or custom logic
+- 🔗 [Source Code on GitHub](https://github.com/yourusername/project-example)
+
+<!-- You can duplicate this section for each project -->
+
+---
+
+## 👤 About Me
+
+- 🎓 Soon-to-be Computer Engineering graduate
+- 🕹️ Passionate about gameplay programming and systems design
+- 💡 I love building mechanics from scratch and solving technical challenges
+- ✨ Always curious and eager to grow in the game industry
+
+---
+
+<!-- Optional: add your resume -->
+<!-- 📄 [View Resume (PDF)](https://link-to-your-resume.com) -->
+
+---
+
+> “Start where you are. Use what you have. Do what you can.” – Arthur Ashe
