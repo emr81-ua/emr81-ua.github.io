@@ -6,7 +6,9 @@ permalink: /about
 
 # Eric – Computer engineer
 
-Aspiring gameplay programmer with a strong passion for game mechanics and interactive systems. I'm finishing my degree in Computer Engineering and have been creating small games and prototypes on my own to grow my skills and express ideas through gameplay.
+Aspiring gameplay programmer with a background in Computer Engineering, specialized in hardware systems. I started making small games and prototypes as personal projects, and over time, this hobby grew into a serious passion. Now, I'm working towards entering the game industry professionally.
+
+I have a strong interest in both artificial intelligence and hardware-driven systems, and I love bringing technical ideas to life through gameplay mechanics and interactive experiences.
 
 ---
 
