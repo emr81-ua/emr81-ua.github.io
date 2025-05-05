@@ -17,9 +17,4 @@ The project focuses on physics-driven sword combat controlled entirely by mouse 
 
 🔗 [Play the prototype on Itch.io](https://ericux.itch.io/knightmare)
 
-{% include image.html url="https://ericux.itch.io/knightmare" image="img\projects/knightmare/icon.png" %}
-
-
-{% include image.html url="http://www.gratisography.com" image="projects/proj-1/dog.jpg" %}
-
-{% include image.html url="http://www.gratisography.com" image="projects/proj-1/wall.jpg" %}
+{% include image.html url="https://ericux.itch.io/knightmare" image="projects/knightmare/icon.jpg" %}
