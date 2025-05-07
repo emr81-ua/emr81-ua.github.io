@@ -4,7 +4,7 @@ title: About me
 permalink: /about
 ---
 
-### Eric – Computer engineer
+# Eric – Computer engineer
 
 Aspiring gameplay programmer with a background in Computer Engineering, specialized in hardware systems. I started making small games and prototypes as personal projects, and over time, this hobby grew into a serious passion. Now, I'm working towards entering the game industry professionally.
 
