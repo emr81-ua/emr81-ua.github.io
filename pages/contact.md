@@ -4,7 +4,7 @@ title: Contact
 permalink: /contact
 ---
 
-###  Get in Touch
+#  Get in Touch
 
 I'm always open to opportunities, collaborations, or simply connecting with people passionate about game development.
 
