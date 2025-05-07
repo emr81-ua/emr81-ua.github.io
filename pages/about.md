@@ -21,6 +21,7 @@ I have a strong interest in both artificial intelligence and hardware-driven sys
 
 
 📄 [Download my CV in english (PDF)](/assets/files/CV_ERIC_ENG.pdf)
-    [Or in spanish](/assets/files/CV_ERIC.pdf)
+
+📄 [Or in spanish](/assets/files/CV_ERIC.pdf)
 
 
