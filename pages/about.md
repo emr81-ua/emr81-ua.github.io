@@ -20,9 +20,7 @@ I have a strong interest in both artificial intelligence and hardware-driven sys
 -  Always curious and eager to grow in the game industry
 
 
-📄 [Download my CV (PDF)](/assets/files/CV_ERIC_ENG.pdf)
+📄 [Download my CV in english (PDF)](/assets/files/CV_ERIC_ENG.pdf)
+    [Or in spanish](/assets/files/CV_ERIC.pdf)
 
 
-
-
-> “Start where you are. Use what you have. Do what you can.” – Arthur Ashe
