@@ -15,8 +15,8 @@ menu:
 projects:
   - name: 'Knightmare'
     url: 'knightmare'
-    description: 'Roguelike en C++ usando SDL2'
-    tech: ['C++', 'SDL2', 'OpenGL']
+    description: 'Knightmare is a 2D top-down roguelite developed in C++ using SDL2 and OpenGL. The player controls a knight trapped in nightmares, fighting waves of enemies to wake up and progress through unique dream worlds. The gameplay focuses on fast-paced combat and procedural upgrades after each run.'
+    tech: ['C++', 'SDL2', 'OpenGL', 'Object-Oriented Programming', 'Game Design', 'Procedural Generation']
 
   - name: 'Project 2'
     url: 'proj-2'
