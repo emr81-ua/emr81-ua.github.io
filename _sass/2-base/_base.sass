@@ -32,8 +32,6 @@ h1, h2, h3, h4, h5, h6
   font-size: 10px
   line-height: 1.2
 
-
-
 p
   margin: 0 0 20px 0
 
@@ -50,8 +48,6 @@ hr
   margin: 10px 0 30px
   height: 0
 
-
-
 /* Links
   ------------------------------------	*/
 a
@@ -62,11 +58,8 @@ a
 a:hover, a:focus
   color: lighten($accent, 20%)
 
-
-
 /* Selection colors (easy to forget)
   ------------------------------------	*/
-
 ::selection
   background: $selectionColor
 
@@ -81,8 +74,6 @@ img::-moz-selection
 
 body
   -webkit-tap-highlight-color: $selectionColor
-
-
 
 /* Basic Styles
   ------------------------------------	*/
@@ -122,3 +113,59 @@ section:nth-child(odd)
 
   h3
     color: darken($accent-light, 10%)
+
+
+/* Project Section Styles
+  ------------------------------------	*/
+.project-unit
+  margin-bottom: 40px
+  border: 1px solid #ccc
+  border-radius: 10px
+  background-color: #f9f9f9
+  padding: 20px
+  display: flex
+  justify-content: space-between
+  align-items: center
+  gap: 20px
+
+.project-content
+  display: flex
+  justify-content: space-between
+  width: 100%
+  gap: 20px
+
+.project-text
+  flex: 2
+
+.project-title
+  font-size: 18px
+  font-weight: bold
+  margin-bottom: 10px
+  color: #333
+
+.project-description
+  font-size: 14px
+  margin-bottom: 10px
+  color: #555
+
+.tech-list
+  list-style: none
+  padding: 0
+  display: flex
+  gap: 10px
+  flex-wrap: wrap
+
+  li
+    background-color: #eee
+    padding: 5px 10px
+    border-radius: 5px
+    font-size: 12px
+
+.project-thumbnail
+  flex: 1
+  max-width: 200px
+
+  img
+    width: 100%
+    border-radius: 8px
+    object-fit: cover
