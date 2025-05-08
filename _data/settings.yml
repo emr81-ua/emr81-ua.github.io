@@ -16,12 +16,31 @@ projects:
   - name: 'Knightmare'
     url: 'knightmare'
     description: 'Roguelike en C++ usando SDL2'
-    repo: 'https://github.com/emr81-ua/knightmare'
-  - name: 'Project Two'
+    tech: ['C++', 'SDL2', 'OpenGL']
+
+  - name: 'Project 2'
     url: 'proj-2'
-    description: 'Juego de puzzles en Unity'
+    description: 'blablabla'
     repo: 'https://github.com/emr81-ua/proj-2'
-  # Añade más proyectos según sea necesario
+    tech: ['C++', 'SDL2', 'OpenGL']
+    
+  - name: 'Project 3'
+    url: 'proj-2'
+    description: 'blablabla'
+    repo: 'https://github.com/emr81-ua/proj-2'
+    tech: ['C++', 'SDL2', 'OpenGL']
+
+  - name: 'Project 4'
+    url: 'proj-3'
+    description: 'blablabla'
+    repo: 'https://github.com/emr81-ua/proj-2'
+    tech: ['C++', 'SDL2', 'OpenGL']
+
+  - name: 'Project 5'
+    url: 'proj-4'
+    description: 'blablabla'
+    repo: 'https://github.com/emr81-ua/proj-2'
+    tech: ['C++', 'SDL2', 'OpenGL']
 
 #-------------------------------
 # Contact Section
