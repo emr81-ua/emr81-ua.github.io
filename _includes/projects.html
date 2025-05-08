@@ -1,27 +1,27 @@
 <section class="project-list">
-  <h2>Projects</h2>
+  <h2>Proyectos</h2>
   {% for project in site.data.settings.projects %}
-    <a href="{{ site.github.url }}/projects/{{ project.url }}" class="project-link">
-      <div class="project-unit">
-        <div class="project-content">
-          <div class="project-text">
-            <h4 class="project-title">{{ project.name }}</h4>
-            {% if project.description %}
-              <p class="project-description">{{ project.description }}</p>
-            {% endif %}
-            {% if project.tech %}
-              <ul class="tech-list">
-                {% for t in project.tech %}
-                  <li>{{ t }}</li>
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div>
-          <div class="project-thumbnail">
+    <div class="project-unit">
+      <div class="project-content">
+        <div class="project-text">
+          <h4 class="project-title">{{ project.name }}</h4>
+          {% if project.description %}
+            <p class="project-description">{{ project.description }}</p>
+          {% endif %}
+          {% if project.tech %}
+            <ul class="tech-list">
+              {% for t in project.tech %}
+                <li>{{ t }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+        <div class="project-thumbnail">
+          <a href="{{ site.github.url }}/projects/{{ project.url }}">
             <img src="{{ site.github.url }}/assets/img/projects/{{ project.url }}/thumbnail.jpg" alt="Thumbnail of {{ project.name }}">
-          </div>
+          </a>
         </div>
       </div>
-    </a>
+    </div>
   {% endfor %}
 </section>
