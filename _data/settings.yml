@@ -25,19 +25,19 @@ projects:
     tech: ['C++', 'SDL2', 'OpenGL']
     
   - name: 'Project 3'
-    url: 'proj-2'
-    description: 'blablabla'
-    repo: 'https://github.com/emr81-ua/proj-2'
-    tech: ['C++', 'SDL2', 'OpenGL']
-
-  - name: 'Project 4'
     url: 'proj-3'
     description: 'blablabla'
     repo: 'https://github.com/emr81-ua/proj-2'
     tech: ['C++', 'SDL2', 'OpenGL']
 
-  - name: 'Project 5'
+  - name: 'Project 4'
     url: 'proj-4'
+    description: 'blablabla'
+    repo: 'https://github.com/emr81-ua/proj-2'
+    tech: ['C++', 'SDL2', 'OpenGL']
+
+  - name: 'Project 5'
+    url: 'proj-5'
     description: 'blablabla'
     repo: 'https://github.com/emr81-ua/proj-2'
     tech: ['C++', 'SDL2', 'OpenGL']
