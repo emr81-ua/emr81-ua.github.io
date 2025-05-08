@@ -1,13 +1,14 @@
-<section>
-  <div class="project-container">
+<section class="project-list">
+  <h2>Proyectos</h2>
+  <ul>
     {% for project in site.data.settings.projects %}
-      <a href="{{ site.github.url }}/projects/{{ project.url }}">
-        <div class="project-unit" data-folder="{{ site.github.url }}/projects/{{ project.url }}" style="background-image: url({{ site.github.url }}/assets/img/projects/{{ project.url }}/thumbnail.jpg)">
-          <div class="project-overlay">
-            <strong>{{ project.name }} <i class="fa fa-arrow-right" aria-hidden="true"></i></strong>
-          </div>
-        </div>
-      </a>
+      <li class="project-item">
+        <h3>{{ project.name }}</h3>
+        <p>{{ project.description }}</p>
+        {% if project.repo %}
+          <a href="{{ project.repo }}" target="_blank">Ver código en GitHub</a>
+        {% endif %}
+      </li>
     {% endfor %}
-  </div>
+  </ul>
 </section>
