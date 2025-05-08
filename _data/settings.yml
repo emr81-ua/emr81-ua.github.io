@@ -9,12 +9,19 @@ menu:
 #-------------------------------
 # Projects Section
 
+
+
+
 projects:
-- {name: 'Knightmare',   url: 'knightmare'}
-- {name: 'Project Two',   url: 'proj-2'}
-- {name: 'Project Three', url: 'proj-3'}
-- {name: 'Project Four',  url: 'proj-4'}
-- {name: 'Project Five',  url: 'proj-5'}
+  - name: 'Knightmare'
+    url: 'knightmare'
+    description: 'Roguelike en C++ usando SDL2'
+    repo: 'https://github.com/emr81-ua/knightmare'
+  - name: 'Project Two'
+    url: 'proj-2'
+    description: 'Juego de puzzles en Unity'
+    repo: 'https://github.com/emr81-ua/proj-2'
+  # Añade más proyectos según sea necesario
 
 #-------------------------------
 # Contact Section
