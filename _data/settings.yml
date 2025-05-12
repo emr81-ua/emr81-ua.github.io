@@ -19,17 +19,17 @@ projects:
     tech: ['GDScript', 'Godot Engine', '2D', 'Action', 'Roguelite', 'Physics-based Combat']
 
 
-  - name: 'Project 2'
-    url: 'proj-2'
-    description: 'blablabla'
-    repo: 'https://github.com/emr81-ua/proj-2'
-    tech: ['C++', 'SDL2', 'OpenGL']
-    
-  - name: 'Project 3'
-    url: 'proj-3'
-    description: 'blablabla'
-    repo: 'https://github.com/emr81-ua/proj-2'
-    tech: ['C++', 'SDL2', 'OpenGL']
+  - name: 'NanoVenture'
+    url: 'nanoventure'
+    description: 'A C++ retro-style game engine built from scratch using SDL2 and OpenGL, currently in development. Focused on pixel-perfect rendering and modular design.'
+    repo: 'https://github.com/emr81-ua/nanoventure'
+    tech: ['C++', 'SDL2', 'OpenGL', 'Entity System', 'Tilemap']
+
+  - name: 'ReelScape'
+    url: 'reelscape'
+    description: 'A 3D fishing simulator developed in Unity. Focuses on realistic water physics, fish behavior AI, and immersive environmental sound. Still in early development.'
+    repo: 'https://github.com/emr81-ua/reelscape'
+    tech: ['C#', 'Unity', '3D', 'AI', 'Physics', 'Environment Design']
 
   - name: 'Project 4'
     url: 'proj-4'
@@ -37,11 +37,6 @@ projects:
     repo: 'https://github.com/emr81-ua/proj-2'
     tech: ['C++', 'SDL2', 'OpenGL']
 
-  - name: 'Project 5'
-    url: 'proj-5'
-    description: 'blablabla'
-    repo: 'https://github.com/emr81-ua/proj-2'
-    tech: ['C++', 'SDL2', 'OpenGL']
 
 #-------------------------------
 # Contact Section
