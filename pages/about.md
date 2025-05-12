@@ -6,11 +6,9 @@ permalink: /about
 
 # Eric – Computer engineer
 
-Aspiring gameplay programmer with a background in Computer Engineering, specialized in hardware systems. I started creating small games and prototypes as personal projects, and over time, this hobby evolved into a true passion. Now, I’m fully focused on joining the game industry professionally.
+Aspiring gameplay programmer with a background in Computer Engineering, specialized in hardware systems. I began making small games and prototypes as personal projects, and over time, this hobby turned into a deep passion and career goal.
 
-While my main focus is gameplay programming and systems design, I consider myself a generalist developer—capable of contributing across the entire development pipeline. I enjoy learning about all the disciplines involved in making games, and I strive to understand how each area connects to deliver a cohesive and engaging experience.
-
-From core gameplay and AI systems, to graphics, audio, UI/UX, networking, physics, and engine architecture—I’m constantly expanding my knowledge and toolkit. I believe that being curious and flexible is essential to building great games, and I’m always eager to dive into new challenges, learn fast, and grow with every project
+While I focus on gameplay and systems programming, I’m passionate about learning all areas involved in game development—AI, graphics, UI, audio, networking, and more. I enjoy understanding how every part fits together and love solving technical challenges to bring ideas to life.
 
 ---
 
