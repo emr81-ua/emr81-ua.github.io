@@ -33,7 +33,7 @@ projects:
     tech: ['C++', 'SDL2', 'OpenGL', 'Entity System', 'Tilemap']
 
   - name: 'ReelScape'
-    url: 'reelscape'
+    url: 'proj-3'
     description: 'A 3D fishing simulator developed in Unity. Focuses on realistic water physics, fish behavior AI, and immersive environmental sound. Still in early development.'
     repo: 'https://github.com/emr81-ua/reelscape'
     tech: ['C#', 'Unity', '3D', 'AI', 'Physics', 'Environment Design']
