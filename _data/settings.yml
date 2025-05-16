@@ -13,6 +13,13 @@ menu:
 
 
 projects:
+
+  - name: 'Portfolio'
+    url: 'portfolio'
+    description: 'blablabla'
+    repo: 'https://github.com/emr81-ua/proj-2'
+    tech: ['C++', 'SDL2', 'OpenGL']
+
   - name: 'Knightmare'
     url: 'knightmare'
     description: 'Action roguelite prototype with physics-based sword combat driven by mouse gestures.'
@@ -31,8 +38,8 @@ projects:
     repo: 'https://github.com/emr81-ua/reelscape'
     tech: ['C#', 'Unity', '3D', 'AI', 'Physics', 'Environment Design']
 
-  - name: 'Project 4'
-    url: 'proj-4'
+  - name: 'Portfolio'
+    url: 'portfolio'
     description: 'blablabla'
     repo: 'https://github.com/emr81-ua/proj-2'
     tech: ['C++', 'SDL2', 'OpenGL']
