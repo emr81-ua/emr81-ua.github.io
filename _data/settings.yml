@@ -26,17 +26,12 @@ projects:
     tech: ['GDScript', 'Godot Engine', '2D', 'Action', 'Roguelite', 'Physics-based Combat']
 
 
-  - name: 'Ultimate Tic Tac Toe'
-    url: 'tictactoe'
-    description: 'A C++ retro-style game engine built from scratch using SDL2 and OpenGL, currently in development. Focused on pixel-perfect rendering and modular design.'
-    repo: 'https://github.com/emr81-ua/nanoventure'
-    tech: ['C++', 'SDL2', 'OpenGL', 'Entity System', 'Tilemap']
+  - name: 'Connect4'
+    url: 'connect4'
+    description: 'A C++ Connect 4 game featuring a Minimax-based AI with alpha-beta pruning and graphical interface using SFML.'
+    repo: 'https://github.com/emr81-ua/Connect4'
+    tech: ['C++', 'SFML', 'Minimax', 'Alpha-Beta Pruning', 'Game AI']
 
-  - name: 'ReelScape'
-    url: 'proj-3'
-    description: 'A 3D fishing simulator developed in Unity. Focuses on realistic water physics, fish behavior AI, and immersive environmental sound. Still in early development.'
-    repo: 'https://github.com/emr81-ua/reelscape'
-    tech: ['C#', 'Unity', '3D', 'AI', 'Physics', 'Environment Design']
 
 
 
