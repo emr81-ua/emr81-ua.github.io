@@ -1,8 +1,20 @@
 ---
 layout: post
-title: 'Project Three'
+title: 'Unity project'
 ---
 
-Donec condimentum a leo nec posuere. Vestibulum faucibus leo nec nisl varius vestibulum. Aenean vel quam semper, vestibulum augue at, rutrum ligula. Ut gravida, ex sit amet fringilla luctus, lorem quam mollis elit, et tristique leo urna non odio. Curabitur elementum viverra consequat. Vestibulum vitae dolor tristique, pellentesque metus non, suscipit nunc. Aenean id sem eu libero sodales dignissim eget quis quam. Phasellus quis lectus ac odio convallis luctus. Praesent sed ligula ipsum. Nullam ultricies nunc nec turpis porttitor elementum. Vestibulum vitae imperdiet elit, nec mattis magna. Vestibulum id neque nec turpis ullamcorper rutrum ac non ligula. Quisque nec pellentesque diam. Vestibulum at aliquam mi, vitae fringilla quam. Suspendisse potenti.
+This personal **Portfolio** is a showcase of my ongoing journey as a game developer and programmer. Here you’ll find a collection of my projects, prototypes, and experiments across various areas like AI, graphics, and gameplay systems.
 
-{% include image.html url="http://www.gratisography.com" image="projects/proj-3/clothes.jpg" %}
+It’s designed as a central hub to keep track of everything I’m working on — from small coding challenges to larger-scale experiments in game development.
+
+### Portfolio Contents
+
+This portfolio will serve as a **living record** of my work, including:
+
+- Prototypes and demos exploring unique gameplay mechanics
+- AI experiments and implementations of board games
+- Graphics and rendering tests using libraries like **SFML**, **SDL2**, and **OpenGL**
+- Custom tools, utilities, and code snippets to support development
+- Experiments in game engines and physics-based systems
+
+I’ll keep updating this space as I learn and build new things.
