@@ -33,6 +33,11 @@ projects:
     repo: 'https://github.com/emr81-ua/Connect4'
     tech: ['C++', 'SFML', 'Minimax', 'Alpha-Beta Pruning', 'Game AI']
 
+  - name: 'Unity project'
+    url: 'proj-3'
+    description: 'On development Unity project featuring a special mechanic'
+    
+    tech: ['C#', 'Unity']
 
 
 
