@@ -21,4 +21,4 @@ I’ll keep updating this space as I learn and build new things.
 
 🔗 [Visit my GitHub profile to explore the code](https://github.com/emr81-ua)
 
-{% include image.html url="https://github.com/emr81-ua" image="projects/portfolio/icon.png" %}
+
