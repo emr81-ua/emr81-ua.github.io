@@ -7,7 +7,7 @@ title: 'Connect4'
 
 The project aims to explore game AI techniques while providing a smooth graphical experience using the SFML library.
 
-### 🔨 Key Features & Systems
+###  Key Features & Systems
 
 - Interactive 2D game board rendered with **SFML**
 - AI opponent implementing **Minimax** with search depth up to 6 and **Alpha-Beta pruning**
@@ -17,6 +17,7 @@ The project aims to explore game AI techniques while providing a smooth graphica
 
 🔗 [Play or check the source on GitHub](https://github.com/emr81-ua/Connect4)
 
-{% include image.html url="https://github.com/emr81-ua/Connect4" image="projects/connect4/icon.png" width="300px" %}
+{% include image.html url="https://github.com/emr81-ua/Connect4" image="projects/connect4/icon.png" width="true" %}
+
 
 
