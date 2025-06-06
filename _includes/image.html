@@ -1,6 +1,6 @@
 <div class="image-container">
   <a href="{{ include.url }}" target="_blank">
-    <img src="{{ site.github.url }}/assets/img/{{ include.image }}" alt="Avatar" class="image" style="max-width: {{ include.width | default: '100%' }}; height: auto; margin: 0 auto; display: block;">
+    <img src="{{ site.github.url }}/assets/img/{{ include.image }}" alt="Avatar" class="image {% if include.width %} custom-width {% endif %}">
     <div class="overlay">
       <div class="text">
         {% if include.text %}
