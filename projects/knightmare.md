@@ -9,11 +9,11 @@ The project focuses on physics-driven sword combat controlled entirely by mouse 
 
 ### 🔨 Key Features & Systems
 
-- 🎮 Character movement with **WASD**, and a **dash mechanic** (Space Bar) with brief invincibility frames
-- ⚔️ **Real-time weapon control** with the mouse; swing strength depends on gesture velocity
-- 👾 **Enemy wave generation** using a custom **spawner system**
-- 🧠 Multiple **enemy types** and **weapons** exist, though only one of each is featured in the current build
-- 🧪 Still in development — focused on prototyping core mechanics
+- Character movement with **WASD**, and a **dash mechanic** (Space Bar) with brief invincibility frames
+- **Real-time weapon control** with the mouse; swing strength depends on gesture velocity
+- **Enemy wave generation** using a custom **spawner system**
+- Multiple **enemy types** and **weapons** exist, though only one of each is featured in the current build
+- Still in development — focused on prototyping core mechanics
 
 🔗 [Play the prototype on Itch.io](https://ericux.itch.io/knightmare)
 

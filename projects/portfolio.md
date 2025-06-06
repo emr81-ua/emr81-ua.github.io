@@ -3,16 +3,21 @@ layout: post
 title: 'Personal Portfolio'
 ---
 
-This personal **Portfolio** showcases a variety of C++ projects focused on game development, AI, and graphical programming.
+This personal **Portfolio** is a showcase of my ongoing journey as a game developer and programmer. Here you’ll find a collection of my projects, prototypes, and experiments across various areas like AI, graphics, and gameplay systems.
 
-It highlights work with libraries like **SFML** and **SDL2**, and includes prototypes ranging from classic board games to physics-driven action games.
+It’s designed as a central hub to keep track of everything I’m working on — from small coding challenges to larger-scale experiments in game development.
 
-### 🔨 Highlights & Projects
+### Portfolio Contents
 
-- 🎲 Board games with AI, such as **Connect4** featuring Minimax and Alpha-Beta pruning
-- ⚔️ Physics-based prototypes like **Knightmare** with gesture-controlled sword combat
-- 🖥️ Custom game engines and rendering experiments using **SDL2** and **OpenGL**
-- 💡 Continuous learning and experimentation in game programming and AI
+This portfolio will serve as a **living record** of my work, including:
+
+- Prototypes and demos exploring unique gameplay mechanics
+- AI experiments and implementations of board games
+- Graphics and rendering tests using libraries like **SFML**, **SDL2**, and **OpenGL**
+- Custom tools, utilities, and code snippets to support development
+- Experiments in game engines and physics-based systems
+
+I’ll keep updating this space as I learn and build new things.
 
 🔗 [Visit my GitHub profile to explore the code](https://github.com/emr81-ua)
 
