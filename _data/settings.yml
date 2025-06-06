@@ -14,11 +14,12 @@ menu:
 
 projects:
 
-  - name: 'Portfolio'
-    url: 'portfolio'
-    description: 'blablabla'
-    repo: 'https://github.com/emr81-ua/proj-2'
-    tech: ['C++', 'SDL2', 'OpenGL']
+- name: 'Portfolio'
+  url: 'portfolio'
+  description: 'This portfolio serves as a central hub to showcase all my projects and experiments in game development and programming. It documents my progress and serves as a personal archive.'
+  repo: 'https://github.com/emr81-ua/emr81-ua.github.io'
+  tech: ['C++', 'OpenGL', 'Jekyll', 'HTML5', 'CSS3']
+
 
   - name: 'Knightmare'
     url: 'knightmare'
