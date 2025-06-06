@@ -17,7 +17,12 @@ The project aims to explore game AI techniques while providing a smooth graphica
 
 🔗 [Play or check the source on GitHub](https://github.com/emr81-ua/Connect4)
 
-{% include image.html url="https://github.com/emr81-ua/Connect4" image="projects/connect4/icon.png" width="true" %}
+{% include image.html 
+   url="https://github.com/emr81-ua/Connect4" 
+   image="projects/connect4/icon.png" 
+   width="150px" 
+   height="150px" %}
+
 
 
 
