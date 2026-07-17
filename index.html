@@ -71,10 +71,18 @@
   .brand{font-family:var(--mono);font-weight:600;letter-spacing:.02em;font-size:15px;display:flex;gap:10px;align-items:center}
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);
     box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 22%,transparent)}
+  .nav-right{display:flex;align-items:center;gap:22px}
   .navlinks{display:flex;gap:28px;font-size:14px;font-family:var(--mono);letter-spacing:.03em}
   .navlinks a{color:var(--muted);transition:color .2s}
   .navlinks a:hover{color:var(--ink)}
   @media(max-width:620px){.navlinks{display:none}}
+  .lang{display:inline-flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden;font-family:var(--mono)}
+  .lang button{background:transparent;color:var(--muted);border:0;padding:6px 11px;font-size:12px;
+    letter-spacing:.06em;cursor:pointer;font-family:inherit;transition:.2s;line-height:1}
+  .lang button:hover{color:var(--ink)}
+  .lang button.active{background:var(--accent);color:#04120f;font-weight:700}
+  .lang button+button{border-left:1px solid var(--line2)}
+  .lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* ---------- HERO ---------- */
   header.hero{position:relative;min-height:88vh;display:flex;align-items:center;
@@ -193,11 +201,17 @@
   <nav>
     <div class="shell">
       <a class="brand" href="#top"><span class="dot"></span>eric.muñoz<span style="color:var(--faint)">/cv</span></a>
-      <div class="navlinks">
-        <a href="#focus">Focus</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+      <div class="nav-right">
+        <div class="navlinks">
+          <a href="#focus" data-i18n="nav.focus">Focus</a>
+          <a href="#work" data-i18n="nav.work">Work</a>
+          <a href="#about" data-i18n="nav.about">About</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div class="lang" role="group" aria-label="Language / Idioma">
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -206,14 +220,14 @@
     <canvas id="cloud"></canvas>
     <div class="hero-veil"></div>
     <div class="shell">
-      <span class="eyebrow">Computer Engineer · Computer Vision</span>
-      <h1>Turning pixels into <span class="accent">geometry</span>.</h1>
-      <p class="lede">I'm <strong>Eric Muñoz Rouillion</strong>, a <strong>Computer Engineer</strong> with a
+      <span class="eyebrow" data-i18n="hero.eyebrow">Computer Engineer · Computer Vision</span>
+      <h1 data-i18n="hero.h1">Turning pixels into <span class="accent">geometry</span>.</h1>
+      <p class="lede" data-i18n="hero.lede">I'm <strong>Eric Muñoz Rouillion</strong>, a <strong>Computer Engineer</strong> with a
         foundation spanning hardware, systems and software — specialized in
         <strong>computer vision</strong> and realistic 3D reconstruction with Gaussian / Triangle Splatting.</p>
       <div class="cta">
-        <a class="btn primary" href="#work">View the work →</a>
-        <a class="btn ghost" href="/assets/files/CV_ERIC_ENG.pdf">↓ Download CV</a>
+        <a class="btn primary" href="#work" data-i18n="hero.cta1">View the work →</a>
+        <a class="btn ghost" id="cvBtn" href="/assets/files/CV_ERIC_ENG.pdf" data-i18n="hero.cta2">↓ Download CV</a>
       </div>
     </div>
     <div class="hud">
@@ -228,26 +242,26 @@
   <section id="focus">
     <div class="shell">
       <div class="sec-head">
-        <span class="eyebrow">Where I focus</span>
-        <h2>A computer engineer, with a specialty.</h2>
-        <p>My foundation is broad — hardware, systems and software — and I've pointed it at
+        <span class="eyebrow" data-i18n="focus.eyebrow">Where I focus</span>
+        <h2 data-i18n="focus.h2">A computer engineer, with a specialty.</h2>
+        <p data-i18n="focus.p">My foundation is broad — hardware, systems and software — and I've pointed it at
           computer vision: capturing reality with cameras and rebuilding it as editable, photorealistic 3D.</p>
       </div>
       <div class="pillars">
         <div class="pillar"><span class="bar"></span>
           <span class="idx">01</span>
-          <h3>Computer Vision & 3D</h3>
-          <p>Structure-from-Motion pipelines (COLMAP) and Gaussian / Triangle Splatting that reconstruct real scenes from ordinary images — my specialty.</p>
+          <h3 data-i18n="p1.h3">Computer Vision & 3D</h3>
+          <p data-i18n="p1.p">Structure-from-Motion pipelines (COLMAP) and Gaussian / Triangle Splatting that reconstruct real scenes from ordinary images — my specialty.</p>
         </div>
         <div class="pillar"><span class="bar"></span>
           <span class="idx">02</span>
-          <h3>Systems & Hardware</h3>
-          <p>A Computer Engineering foundation specialized in hardware — comfortable from the GPU up to the application layer.</p>
+          <h3 data-i18n="p2.h3">Systems & Hardware</h3>
+          <p data-i18n="p2.p">A Computer Engineering foundation specialized in hardware — comfortable from the GPU up to the application layer.</p>
         </div>
         <div class="pillar"><span class="bar"></span>
           <span class="idx">03</span>
-          <h3>Software & Algorithms</h3>
-          <p>From C++ AI and search algorithms to full data pipelines and tools — I like building things end to end and solving the hard technical parts.</p>
+          <h3 data-i18n="p3.h3">Software & Algorithms</h3>
+          <p data-i18n="p3.p">From C++ AI and search algorithms to full data pipelines and tools — I like building things end to end and solving the hard technical parts.</p>
         </div>
       </div>
     </div>
@@ -257,16 +271,16 @@
   <section id="work">
     <div class="shell">
       <div class="sec-head">
-        <span class="eyebrow">Selected work</span>
-        <h2>Projects & experiments.</h2>
+        <span class="eyebrow" data-i18n="work.eyebrow">Selected work</span>
+        <h2 data-i18n="work.h2">Projects & experiments.</h2>
       </div>
 
       <div class="flagship">
         <div class="viz"><canvas id="splatMini"></canvas></div>
         <div class="body">
-          <span class="tag-flag">◆ Final degree thesis · Flagship</span>
-          <h3>Realistic 3D Reconstruction with Triangle Splatting</h3>
-          <p>An end-to-end 2D→3D pipeline that reconstructs real objects and scenes from images and
+          <span class="tag-flag" data-i18n="flag.tag">◆ Final degree thesis · Flagship</span>
+          <h3 data-i18n="flag.h3">Realistic 3D Reconstruction with Triangle Splatting</h3>
+          <p data-i18n="flag.p">An end-to-end 2D→3D pipeline that reconstructs real objects and scenes from images and
             renders them photorealistically using Triangle Splatting — bridging classic photogrammetry
             (COLMAP) with modern differentiable rendering.</p>
           <div class="techs">
@@ -274,15 +288,15 @@
             <span class="chip">COLMAP</span><span class="chip">PyTorch</span>
             <span class="chip">CUDA</span><span class="chip">Blender</span>
           </div>
-          <a class="repo-link private" href="#">🔒 Private repository · in development</a>
+          <a class="repo-link private" href="#" data-i18n="flag.repo">🔒 Private repository · in development</a>
         </div>
       </div>
 
       <div class="grid2">
         <div class="card">
-          <div class="top"><span class="kind">Artificial Intelligence · C++</span></div>
+          <div class="top"><span class="kind" data-i18n="c4.kind">Artificial Intelligence · C++</span></div>
           <h3>Connect4</h3>
-          <p>A Connect 4 engine with a Minimax AI using alpha-beta pruning and an SFML graphical interface.</p>
+          <p data-i18n="c4.p">A Connect 4 engine with a Minimax AI using alpha-beta pruning and an SFML graphical interface.</p>
           <div class="techs">
             <span class="chip">C++</span><span class="chip">SFML</span>
             <span class="chip">Minimax</span><span class="chip">Alpha-Beta</span>
@@ -291,9 +305,9 @@
         </div>
 
         <div class="card">
-          <div class="top"><span class="kind">Game Dev · Godot</span></div>
+          <div class="top"><span class="kind" data-i18n="kn.kind">Game Dev · Godot</span></div>
           <h3>Knightmare</h3>
-          <p>Action roguelite prototype with physics-based sword combat driven by mouse gestures.</p>
+          <p data-i18n="kn.p">Action roguelite prototype with physics-based sword combat driven by mouse gestures.</p>
           <div class="techs">
             <span class="chip">GDScript</span><span class="chip">Godot 4</span>
             <span class="chip">2D</span><span class="chip">Physics Combat</span>
@@ -303,8 +317,8 @@
 
         <div class="card">
           <div class="top"><span class="kind">Meta · Jekyll</span></div>
-          <h3>This Portfolio</h3>
-          <p>A central hub documenting my projects and experiments in computer vision and programming.</p>
+          <h3 data-i18n="port.h3">This Portfolio</h3>
+          <p data-i18n="port.p">A central hub documenting my projects and experiments in computer vision and programming.</p>
           <div class="techs">
             <span class="chip">Jekyll</span><span class="chip">HTML5</span>
             <span class="chip">CSS3</span><span class="chip">GitHub Pages</span>
@@ -319,22 +333,22 @@
   <section id="about">
     <div class="shell">
       <div class="sec-head">
-        <span class="eyebrow">About</span>
-        <h2>Engineer first, specialist by choice.</h2>
+        <span class="eyebrow" data-i18n="about.eyebrow">About</span>
+        <h2 data-i18n="about.h2">Engineer first, specialist by choice.</h2>
       </div>
       <div class="about-grid">
         <div>
-          <p>I'm a <strong>Computer Engineer</strong> specialized in hardware systems.
+          <p data-i18n="about.p1">I'm a <strong>Computer Engineer</strong> specialized in hardware systems.
             That broad foundation is what I lean on — and lately I've pointed it firmly at
             <strong>computer vision and 3D reconstruction</strong>.</p>
-          <p>What started as building small programs and prototypes turned into a fascination with how machines
+          <p data-i18n="about.p2">What started as building small programs and prototypes turned into a fascination with how machines
             <em>see</em> — how a handful of photographs can become a faithful, explorable 3D model. My final
             degree thesis pushes that idea with <strong>Triangle Splatting</strong>, and I love owning the whole
             pipeline: capture, calibration, reconstruction, rendering and the GPU work underneath.</p>
-          <p>I'm curious across the stack — graphics, geometry, AI and the low-level systems that make it fast —
+          <p data-i18n="about.p3">I'm curious across the stack — graphics, geometry, AI and the low-level systems that make it fast —
             and always looking for the next hard technical problem to solve.</p>
           <div class="skillset">
-            <h4>// Toolbox</h4>
+            <h4 data-i18n="toolbox.h4">// Toolbox</h4>
             <div class="techs">
               <span class="chip">Python</span><span class="chip">C++</span><span class="chip">C#</span>
               <span class="chip">CUDA</span><span class="chip">PyTorch</span><span class="chip">COLMAP</span>
@@ -344,12 +358,12 @@
           </div>
         </div>
         <div class="facts">
-          <div class="row"><span class="k">ROLE</span><span class="v">Computer Engineer</span></div>
-          <div class="row"><span class="k">FOCUS</span><span class="v">Computer Vision · 3D Reconstruction</span></div>
-          <div class="row"><span class="k">DEGREE</span><span class="v">Computer Engineering</span></div>
-          <div class="row"><span class="k">SPECIALTY</span><span class="v">Hardware Systems</span></div>
-          <div class="row"><span class="k">BASED</span><span class="v">Spain 🇪🇸</span></div>
-          <div class="row"><span class="k">STATUS</span><span class="v">Open to opportunities</span></div>
+          <div class="row"><span class="k" data-i18n="f.role.k">ROLE</span><span class="v" data-i18n="f.role.v">Computer Engineer</span></div>
+          <div class="row"><span class="k" data-i18n="f.focus.k">FOCUS</span><span class="v" data-i18n="f.focus.v">Computer Vision · 3D Reconstruction</span></div>
+          <div class="row"><span class="k" data-i18n="f.degree.k">DEGREE</span><span class="v" data-i18n="f.degree.v">Computer Engineering</span></div>
+          <div class="row"><span class="k" data-i18n="f.spec.k">SPECIALTY</span><span class="v" data-i18n="f.spec.v">Hardware Systems</span></div>
+          <div class="row"><span class="k" data-i18n="f.based.k">BASED</span><span class="v" data-i18n="f.based.v">Spain 🇪🇸</span></div>
+          <div class="row"><span class="k" data-i18n="f.status.k">STATUS</span><span class="v" data-i18n="f.status.v">Open to opportunities</span></div>
           <div class="row"><span class="k">CV</span><span class="v"><a href="/assets/files/CV_ERIC_ENG.pdf" style="color:var(--accent)">EN</a> · <a href="/assets/files/CV_ERIC.pdf" style="color:var(--accent)">ES</a></span></div>
         </div>
       </div>
@@ -359,9 +373,9 @@
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="shell">
-      <span class="eyebrow" style="justify-content:center">Get in touch</span>
-      <h2>Let's build something together.</h2>
-      <p>Whether it's a computer-vision role, an engineering challenge or a collaboration — my inbox is open.</p>
+      <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Get in touch</span>
+      <h2 data-i18n="contact.h2">Let's build something together.</h2>
+      <p data-i18n="contact.p">Whether it's a computer-vision role, an engineering challenge or a collaboration — my inbox is open.</p>
       <div class="socials">
         <a class="soc" href="https://github.com/emr81-ua" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.28 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
         <a class="soc" href="https://linkedin.com/in/eric-muñoz-rouillion-3a303a1b2" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.76V1.74C24 .78 23.2 0 22.22 0Z"/></svg></a>
@@ -376,7 +390,7 @@
   <footer>
     <div class="shell">
       <span>© 2026 Eric Muñoz Rouillion</span>
-      <span>Built with Jekyll · GitHub Pages · <b style="color:var(--accent)">reconstructed in real time</b></span>
+      <span data-i18n="footer.built">Built with Jekyll · GitHub Pages · <b style="color:var(--accent)">reconstructed in real time</b></span>
     </div>
   </footer>
 </div>
@@ -384,6 +398,88 @@
 <script>
 (function(){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- i18n (ES overrides; English lives inline as the no-JS fallback) ----------
+  const ES = {
+    'nav.focus':'Enfoque',
+    'nav.work':'Proyectos',
+    'nav.about':'Sobre mí',
+    'nav.contact':'Contacto',
+    'hero.eyebrow':'Ingeniero Informático · Visión por Computador',
+    'hero.h1':'Convirtiendo píxeles en <span class="accent">geometría</span>.',
+    'hero.lede':'Soy <strong>Eric Muñoz Rouillion</strong>, <strong>Ingeniero Informático</strong> con una base que abarca hardware, sistemas y software — especializado en <strong>visión por computador</strong> y reconstrucción 3D realista con Gaussian / Triangle Splatting.',
+    'hero.cta1':'Ver proyectos →',
+    'hero.cta2':'↓ Descargar CV',
+    'focus.eyebrow':'En qué me enfoco',
+    'focus.h2':'Un ingeniero informático, con una especialidad.',
+    'focus.p':'Mi base es amplia — hardware, sistemas y software — y la he orientado hacia la visión por computador: capturar la realidad con cámaras y reconstruirla como 3D fotorrealista y editable.',
+    'p1.h3':'Visión por Computador y 3D',
+    'p1.p':'Pipelines de Structure-from-Motion (COLMAP) y Gaussian / Triangle Splatting que reconstruyen escenas reales a partir de imágenes corrientes — mi especialidad.',
+    'p2.h3':'Sistemas y Hardware',
+    'p2.p':'Una base de Ingeniería Informática especializada en hardware — cómodo desde la GPU hasta la capa de aplicación.',
+    'p3.h3':'Software y Algoritmos',
+    'p3.p':'Desde IA y algoritmos de búsqueda en C++ hasta pipelines de datos y herramientas completas — me gusta construir de principio a fin y resolver las partes técnicas difíciles.',
+    'work.eyebrow':'Trabajo seleccionado',
+    'work.h2':'Proyectos y experimentos.',
+    'flag.tag':'◆ Trabajo de Fin de Grado · Destacado',
+    'flag.h3':'Reconstrucción 3D realista con Triangle Splatting',
+    'flag.p':'Un pipeline 2D→3D completo que reconstruye objetos y escenas reales a partir de imágenes y los renderiza de forma fotorrealista con Triangle Splatting — uniendo la fotogrametría clásica (COLMAP) con el renderizado diferenciable moderno.',
+    'flag.repo':'🔒 Repositorio privado · en desarrollo',
+    'c4.kind':'Inteligencia Artificial · C++',
+    'c4.p':'Un motor de Conecta 4 con una IA Minimax con poda alfa-beta e interfaz gráfica en SFML.',
+    'kn.kind':'Videojuegos · Godot',
+    'kn.p':'Prototipo de acción roguelite con combate de espada basado en físicas y controlado por gestos del ratón.',
+    'port.h3':'Este Portfolio',
+    'port.p':'Un punto central que documenta mis proyectos y experimentos en visión por computador y programación.',
+    'about.eyebrow':'Sobre mí',
+    'about.h2':'Ingeniero ante todo, especialista por elección.',
+    'about.p1':'Soy <strong>Ingeniero Informático</strong> especializado en sistemas hardware. Esa base amplia es en la que me apoyo — y últimamente la he dirigido de lleno hacia la <strong>visión por computador y la reconstrucción 3D</strong>.',
+    'about.p2':'Lo que empezó como construir pequeños programas y prototipos se convirtió en una fascinación por cómo <em>ven</em> las máquinas — cómo un puñado de fotografías puede convertirse en un modelo 3D fiel y explorable. Mi Trabajo de Fin de Grado lleva esa idea más allá con <strong>Triangle Splatting</strong>, y me encanta dominar todo el pipeline: captura, calibración, reconstrucción, renderizado y el trabajo de GPU por debajo.',
+    'about.p3':'Soy curioso en toda la pila — gráficos, geometría, IA y los sistemas de bajo nivel que lo hacen rápido — y siempre busco el siguiente problema técnico difícil que resolver.',
+    'toolbox.h4':'// Herramientas',
+    'f.role.k':'ROL','f.role.v':'Ingeniero Informático',
+    'f.focus.k':'FOCO','f.focus.v':'Visión por Computador · Reconstrucción 3D',
+    'f.degree.k':'TITULACIÓN','f.degree.v':'Ingeniería Informática',
+    'f.spec.k':'ESPECIALIDAD','f.spec.v':'Sistemas Hardware',
+    'f.based.k':'UBICACIÓN','f.based.v':'España 🇪🇸',
+    'f.status.k':'ESTADO','f.status.v':'Abierto a oportunidades',
+    'contact.eyebrow':'Contacto',
+    'contact.h2':'Construyamos algo juntos.',
+    'contact.p':'Ya sea un puesto de visión por computador, un reto de ingeniería o una colaboración — mi bandeja está abierta.',
+    'footer.built':'Hecho con Jekyll · GitHub Pages · <b style="color:var(--accent)">reconstruido en tiempo real</b>'
+  };
+  const TITLES = {en:'Eric Muñoz Rouillion — Computer Engineer', es:'Eric Muñoz Rouillion — Ingeniero Informático'};
+  const CV = {en:'/assets/files/CV_ERIC_ENG.pdf', es:'/assets/files/CV_ERIC.pdf'};
+
+  const nodes = document.querySelectorAll('[data-i18n]');
+  const EN = {};
+  nodes.forEach(function(el){ EN[el.getAttribute('data-i18n')] = el.innerHTML; });
+
+  function setLang(lang){
+    if(lang!=='es') lang='en';
+    nodes.forEach(function(el){
+      const k = el.getAttribute('data-i18n');
+      const val = (lang==='es') ? ES[k] : EN[k];
+      if(val!=null) el.innerHTML = val;
+    });
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang];
+    const cv = document.getElementById('cvBtn');
+    if(cv) cv.setAttribute('href', CV[lang]);
+    document.querySelectorAll('.lang button').forEach(function(b){
+      const on = b.getAttribute('data-lang')===lang;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+
+  let saved=null; try{ saved=localStorage.getItem('lang'); }catch(e){}
+  const initial = saved || ((navigator.language||'en').toLowerCase().indexOf('es')===0 ? 'es' : 'en');
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); });
+  });
+  setLang(initial);
 
   // ---- shared gaussian-splat point cloud renderer ----
   function makeSprites(){
