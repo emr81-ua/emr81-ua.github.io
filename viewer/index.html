@@ -3,84 +3,129 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Visor 3D · Gaussian Splatting</title>
+<title>Visor 3D · Reconstrucción Gaussian Splatting</title>
+<script type="module" src="lib/model-viewer.min.js"></script>
 <style>
-  :root { color-scheme: dark; }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; background: #0b0d12; overflow: hidden; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-  #gl { display: block; width: 100vw; height: 100vh; touch-action: none; cursor: grab; }
-  #gl:active { cursor: grabbing; }
-  .panel {
-    position: fixed; left: 14px; top: 14px; z-index: 10;
-    background: rgba(16,20,28,.72); backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,.08); border-radius: 12px;
-    padding: 12px 14px; color: #dce3f0; font-size: 13px; line-height: 1.5; max-width: 300px;
-  }
-  .panel h1 { font-size: 14px; font-weight: 650; margin-bottom: 6px; letter-spacing: .2px; }
-  .panel .hint { color: #8b96a8; font-size: 12px; }
-  .panel .count { color: #7fd1a3; font-variant-numeric: tabular-nums; }
-  .panel label.file {
-    display: inline-block; margin-top: 8px; padding: 6px 10px; cursor: pointer;
-    background: #2a6df4; color: #fff; border-radius: 8px; font-size: 12px; font-weight: 600;
-  }
-  .panel label.file:hover { background: #3f7ff6; }
-  .panel input[type=file] { display: none; }
-  #drop {
-    position: fixed; inset: 0; z-index: 20; display: none;
-    align-items: center; justify-content: center;
-    background: rgba(10,13,20,.82); color: #cfe0ff; font-size: 20px; font-weight: 600;
-    border: 3px dashed #2a6df4;
-  }
-  #drop.on { display: flex; }
-  #loading {
-    position: fixed; inset: 0; z-index: 15; display: flex;
-    align-items: center; justify-content: center; flex-direction: column; gap: 12px;
-    background: #0b0d12; color: #9fb0c8; font-size: 14px;
-  }
-  #loading .bar { width: 220px; height: 4px; background: #1b2230; border-radius: 4px; overflow: hidden; }
-  #loading .bar i { display: block; height: 100%; width: 0; background: #2a6df4; transition: width .1s; }
-  #err { position: fixed; left: 14px; top: 14px; z-index: 30; color: #ff9a9a; font-size: 12px; max-width: 90vw; }
-  .inputs { position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 10;
-    background: rgba(16,20,28,.72); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.08);
-    border-radius: 12px; padding: 10px 14px; color: #dce3f0; max-width: min(94vw, 700px); }
-  .inputs .cap { font-size: 12.5px; color: #aeb9cc; margin-bottom: 8px; text-align: center; }
-  .inputs .cap b { color: #7fd1a3; }
-  .inputs .thumbs { display: flex; align-items: center; gap: 6px; justify-content: center; flex-wrap: wrap; }
-  .inputs .thumbs img { width: 74px; height: auto; border-radius: 6px; border: 1px solid rgba(255,255,255,.12); display: block; }
-  .inputs .arrow { font-size: 13px; color: #7fd1a3; font-weight: 700; margin: 0 2px 0 6px; white-space: nowrap; }
-  @media (max-width: 520px) { .inputs .thumbs img { width: 50px; } }
+  :root { color-scheme: dark; --accent:#22d0bd; --accent2:#2a6df4; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; background:#0b0d12; overflow:hidden;
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:#dce3f0; }
+
+  /* ---- selector de modos ---- */
+  .modes { position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:40;
+    display:flex; gap:2px; background:rgba(16,20,28,.82); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:4px; }
+  .modes button { background:transparent; color:#9fb0c8; border:0; cursor:pointer;
+    font:600 13px/1 system-ui,sans-serif; padding:9px 14px; border-radius:9px; transition:.15s; white-space:nowrap; }
+  .modes button:hover { color:#fff; }
+  .modes button.active { background:var(--accent); color:#04120f; }
+  @media (max-width:520px){ .modes button{ padding:8px 10px; font-size:12px; } }
+
+  .mode { position:fixed; inset:0; display:none; }
+  .mode.active { display:block; }
+
+  /* ---- modo 3D reconstruido ---- */
+  #gl { display:block; width:100vw; height:100vh; touch-action:none; cursor:grab; }
+  #gl:active { cursor:grabbing; }
+  .panel { position:fixed; left:14px; bottom:14px; z-index:20;
+    background:rgba(16,20,28,.72); backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.08); border-radius:12px;
+    padding:11px 13px; font-size:12.5px; line-height:1.5; max-width:280px; }
+  .panel .hint { color:#8b96a8; font-size:11.5px; }
+  .panel .count { color:var(--accent); font-variant-numeric:tabular-nums; }
+  .panel label.file { display:inline-block; margin-top:8px; padding:6px 10px; cursor:pointer;
+    background:var(--accent2); color:#fff; border-radius:8px; font-size:12px; font-weight:600; }
+  .panel input[type=file] { display:none; }
+  #drop { position:fixed; inset:0; z-index:25; display:none; align-items:center; justify-content:center;
+    background:rgba(10,13,20,.82); color:#cfe0ff; font-size:20px; font-weight:600; border:3px dashed var(--accent2); }
+  #drop.on { display:flex; }
+  #loading { position:fixed; inset:0; z-index:18; display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:12px; background:#0b0d12; color:#9fb0c8; font-size:14px; }
+  #loading .bar { width:220px; height:4px; background:#1b2230; border-radius:4px; overflow:hidden; }
+  #loading .bar i { display:block; height:100%; width:0; background:var(--accent2); transition:width .1s; }
+  #err { position:fixed; left:14px; top:64px; z-index:30; color:#ff9a9a; font-size:12px; max-width:90vw; }
+
+  /* ---- modo fotos ---- */
+  #mode-fotos { overflow-y:auto; padding:68px 16px 24px; }
+  .gal-cap { text-align:center; color:#aeb9cc; font-size:13px; margin:0 auto 16px; max-width:660px; line-height:1.5; }
+  .gal-cap b { color:var(--accent); }
+  .gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px;
+    max-width:1100px; margin:0 auto; }
+  .gallery img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:8px; cursor:pointer;
+    border:1px solid rgba(255,255,255,.08); transition:.15s; background:#11131a; }
+  .gallery img:hover { border-color:var(--accent); transform:scale(1.03); }
+
+  #lightbox { position:fixed; inset:0; z-index:60; display:none; background:rgba(6,8,12,.94);
+    align-items:center; justify-content:center; }
+  #lightbox.on { display:flex; }
+  #lightbox img { max-width:92vw; max-height:84vh; border-radius:10px; }
+  .lb-close { position:fixed; top:14px; right:20px; font-size:32px; line-height:1; color:#cfe0ff; cursor:pointer; }
+  .lb-nav { position:fixed; top:50%; transform:translateY(-50%); font-size:46px; color:#cfe0ff;
+    cursor:pointer; user-select:none; padding:0 16px; opacity:.75; }
+  .lb-nav:hover { opacity:1; }
+  #lb-prev { left:4px; } #lb-next { right:4px; }
+  #lb-cap { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); color:#9fb0c8;
+    font-size:13px; font-variant-numeric:tabular-nums; }
+
+  /* ---- modo original (malla) ---- */
+  model-viewer { width:100vw; height:100vh; background:#0b0d12; }
+  .mv-cap { position:fixed; left:14px; bottom:14px; z-index:20; background:rgba(16,20,28,.72);
+    backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.08); border-radius:12px;
+    padding:11px 13px; font-size:12.5px; max-width:280px; }
+  .mv-cap .hint { color:#8b96a8; font-size:11.5px; margin-top:2px; }
 </style>
 </head>
 <body>
-<canvas id="gl"></canvas>
 
-<div class="panel">
-  <h1>Visor 3D · Gaussian Splatting</h1>
-  <div class="hint">Arrastra para girar · rueda para acercar · clic derecho para mover.</div>
-  <div style="margin-top:6px">Gaussianas: <span class="count" id="count">—</span></div>
-  <label class="file">Abrir mi modelo (.ply / .splat)
-    <input type="file" id="file" accept=".ply,.splat">
-  </label>
+<div class="modes">
+  <button data-mode="recon" class="active">3D Reconstruido</button>
+  <button data-mode="fotos">Fotos</button>
+  <button data-mode="original">Modelo original</button>
 </div>
 
-<div id="drop">Suelta aquí tu .ply o .splat</div>
-<div id="loading"><div>Cargando modelo…</div><div class="bar"><i id="prog"></i></div></div>
-<div id="err"></div>
-
-<div class="inputs">
-  <div class="cap">De <b>60 fotos</b> a un modelo 3D — COLMAP + Gaussian Splatting con fondo eliminado por máscaras</div>
-  <div class="thumbs">
-    <img src="photos/in_0.jpg" alt="foto de entrada">
-    <img src="photos/in_1.jpg" alt="foto de entrada">
-    <img src="photos/in_2.jpg" alt="foto de entrada">
-    <img src="photos/in_3.jpg" alt="foto de entrada">
-    <img src="photos/in_4.jpg" alt="foto de entrada">
-    <span class="arrow">→ 3D</span>
+<!-- MODO: 3D reconstruido -->
+<section id="mode-recon" class="mode active">
+  <canvas id="gl"></canvas>
+  <div class="panel">
+    <div class="hint">Arrastra para girar · rueda para acercar · clic derecho para mover.</div>
+    <div style="margin-top:6px">Gaussianas: <span class="count" id="count">—</span></div>
+    <label class="file">Abrir otro modelo (.ply / .splat)
+      <input type="file" id="file" accept=".ply,.splat">
+    </label>
   </div>
+  <div id="drop">Suelta aquí tu .ply o .splat</div>
+  <div id="loading"><div>Cargando modelo…</div><div class="bar"><i id="prog"></i></div></div>
+  <div id="err"></div>
+</section>
+
+<!-- MODO: fotos -->
+<section id="mode-fotos" class="mode">
+  <p class="gal-cap">Las <b>60 fotos</b> de entrada, renderizadas alrededor del modelo, que alimentan el pipeline COLMAP + Gaussian Splatting. Haz clic en cualquiera para ampliarla.</p>
+  <div class="gallery" id="gallery"></div>
+</section>
+
+<!-- MODO: modelo original -->
+<section id="mode-original" class="mode">
+  <model-viewer id="mv" camera-controls auto-rotate auto-rotate-delay="0"
+     rotation-per-second="18deg" shadow-intensity="0.55" exposure="1.1"
+     environment-image="neutral" camera-orbit="0deg 82deg auto" interaction-prompt="none"></model-viewer>
+  <div class="mv-cap"><b>Modelo original</b> (Remy · Blender)<div class="hint">El objeto real del que salieron las 60 fotos.</div></div>
+</section>
+
+<!-- lightbox de fotos -->
+<div id="lightbox">
+  <span class="lb-close" id="lb-close">×</span>
+  <span class="lb-nav" id="lb-prev">‹</span>
+  <img id="lb-img" src="" alt="foto de entrada">
+  <span class="lb-nav" id="lb-next">›</span>
+  <div id="lb-cap"></div>
 </div>
 
 <script>
 "use strict";
+let currentMode = "recon";
+
+/* =================================================================== SPLAT ENGINE */
 const SH_C0 = 0.28209479177387814;
 const canvas = document.getElementById("gl");
 const gl = canvas.getContext("webgl2", { antialias: false, premultipliedAlpha: true, alpha: true });
@@ -93,7 +138,6 @@ const elDrop = document.getElementById("drop");
 function fail(m){ elErr.textContent = m; console.error(m); }
 if (!gl) fail("Tu navegador no soporta WebGL2.");
 
-/* ---------------------------------------------------------------- shaders */
 const VERT = `#version 300 es
 precision highp float; precision highp int;
 uniform sampler2D u_data;
@@ -162,7 +206,6 @@ const U = n => gl.getUniformLocation(prog, n);
 const uData = U("u_data"), uTexw = U("u_texw"), uView = U("u_view"), uProj = U("u_proj"),
       uFocal = U("u_focal"), uViewport = U("u_viewport");
 
-/* quad (triangle strip) */
 const quadBuf = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-2,-2, 2,-2, -2,2, 2,2]), gl.STATIC_DRAW);
@@ -171,7 +214,6 @@ gl.enableVertexAttribArray(aQuad);
 gl.vertexAttribPointer(aQuad, 2, gl.FLOAT, false, 0, 0);
 gl.vertexAttribDivisor(aQuad, 0);
 
-/* per-instance index (sorted order) */
 const idxBuf = gl.createBuffer();
 const aIndex = gl.getAttribLocation(prog, "a_index");
 gl.bindBuffer(gl.ARRAY_BUFFER, idxBuf);
@@ -180,12 +222,10 @@ gl.vertexAttribIPointer(aIndex, 1, gl.UNSIGNED_INT, 0, 0);
 gl.vertexAttribDivisor(aIndex, 1);
 
 const dataTex = gl.createTexture();
-
 gl.disable(gl.DEPTH_TEST);
 gl.enable(gl.BLEND);
 gl.blendFuncSeparate(gl.ONE, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
-/* ------------------------------------------------------------ math utils */
 function mat4Perspective(fovy, aspect, near, far){
   const f = 1/Math.tan(fovy/2), nf = 1/(near-far);
   return [f/aspect,0,0,0, 0,f,0,0, 0,0,(far+near)*nf,-1, 0,0,2*far*near*nf,0];
@@ -200,7 +240,6 @@ const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
 const cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]];
 const norm=a=>{const l=Math.hypot(a[0],a[1],a[2])||1;return[a[0]/l,a[1]/l,a[2]/l];};
 
-/* ------------------------------------------------------ sorting worker */
 const workerSrc = `
 let positions = null, count = 0;
 self.onmessage = e => {
@@ -212,7 +251,7 @@ self.onmessage = e => {
     let mn = Infinity, mx = -Infinity;
     for (let i=0;i<n;i++){
       const x=positions[3*i],y=positions[3*i+1],z=positions[3*i+2];
-      const dz = v[2]*x + v[6]*y + v[10]*z + v[14];  // cam-space z
+      const dz = v[2]*x + v[6]*y + v[10]*z + v[14];
       depth[i]=dz; if(dz<mn)mn=dz; if(dz>mx)mx=dz;
     }
     const order = new Uint32Array(n);
@@ -221,7 +260,7 @@ self.onmessage = e => {
       const key=new Uint16Array(n);
       for(let i=0;i<n;i++){const k=((depth[i]-mn)*inv)|0; key[i]=k; cnt[k]++;}
       for(let i=1;i<B;i++) cnt[i]+=cnt[i-1];
-      for(let i=n-1;i>=0;i--) order[--cnt[key[i]]]=i;  // ascending depth = far first
+      for(let i=n-1;i>=0;i--) order[--cnt[key[i]]]=i;
     } else { for(let i=0;i<n;i++) order[i]=i; }
     self.postMessage({order: order.buffer}, [order.buffer]);
   }
@@ -243,7 +282,6 @@ function requestSort(){
   worker.postMessage({ view: lastView });
 }
 
-/* ------------------------------------------------------ camera state */
 let SPLATS = 0;
 const cam = { target:[0,0,0], yaw:0, pitch:0, dist:5 };
 function viewMatrix(){
@@ -252,7 +290,6 @@ function viewMatrix(){
   const eye=[cam.target[0]+dir[0]*cam.dist, cam.target[1]+dir[1]*cam.dist, cam.target[2]+dir[2]*cam.dist];
   return mat4LookAt(eye, cam.target, [0,1,0]);
 }
-function mul4(a,b){ const o=new Array(16); for(let c=0;c<4;c++)for(let r=0;r<4;r++){let s=0;for(let k=0;k<4;k++)s+=a[k*4+r]*b[c*4+k];o[c*4+r]=s;} return o; }
 
 let proj, focal=[1000,1000];
 function resize(){
@@ -282,31 +319,26 @@ function draw(){
   gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, SPLATS);
 }
 
-/* ------------------------------------------------------ load a model */
 function packToTexture(n, center, scale, opacity, color, rot){
-  // build RGBA32F data texture: 4 texels/gaussian
   const texw = 2048;
   const texh = Math.ceil((n*4)/texw);
   const data = new Float32Array(texw*texh*4);
   const pos = new Float32Array(n*3);
   const bb0=[Infinity,Infinity,Infinity], bb1=[-Infinity,-Infinity,-Infinity];
   for (let i=0;i<n;i++){
-    const x=center[3*i], y=-center[3*i+1], z=center[3*i+2];  // Y invertida (mundo COLMAP: +Y abajo)
+    const x=center[3*i], y=-center[3*i+1], z=center[3*i+2];
     pos[3*i]=x; pos[3*i+1]=y; pos[3*i+2]=z;
     const bbv=[x,y,z];
     for(let k=0;k<3;k++){ const v=bbv[k]; if(v<bb0[k])bb0[k]=v; if(v>bb1[k])bb1[k]=v; }
-    // rotation matrix from quaternion (w,x,y,z)
     let qw=rot[4*i],qx=rot[4*i+1],qy=rot[4*i+2],qz=rot[4*i+3];
     const ql=Math.hypot(qw,qx,qy,qz)||1; qw/=ql;qx/=ql;qy/=ql;qz/=ql;
     const sx=scale[3*i],sy=scale[3*i+1],sz=scale[3*i+2];
-    // M = R * diag(s)  (columns scaled)
     const r00=1-2*(qy*qy+qz*qz), r01=2*(qx*qy-qw*qz), r02=2*(qx*qz+qw*qy);
     const r10=2*(qx*qy+qw*qz), r11=1-2*(qx*qx+qz*qz), r12=2*(qy*qz-qw*qx);
     const r20=2*(qx*qz-qw*qy), r21=2*(qy*qz+qw*qx), r22=1-2*(qx*qx+qy*qy);
     const m00=r00*sx, m01=r01*sy, m02=r02*sz;
     const m10=r10*sx, m11=r11*sy, m12=r12*sz;
     const m20=r20*sx, m21=r21*sy, m22=r22*sz;
-    // Sigma = M * M^T  (symmetric)
     const S00=m00*m00+m01*m01+m02*m02;
     const S01=m00*m10+m01*m11+m02*m12;
     const S02=m00*m20+m01*m21+m02*m22;
@@ -316,7 +348,6 @@ function packToTexture(n, center, scale, opacity, color, rot){
     const o=i*16;
     data[o+0]=x; data[o+1]=y; data[o+2]=z; data[o+3]=opacity[i];
     data[o+4]=color[3*i]; data[o+5]=color[3*i+1]; data[o+6]=color[3*i+2]; data[o+7]=0;
-    // reflexión en Y: negar los términos cruzados de la covarianza con Y (S01, S12)
     data[o+8]=S00; data[o+9]=-S01; data[o+10]=S02; data[o+11]=S11;
     data[o+12]=-S12; data[o+13]=S22; data[o+14]=0; data[o+15]=0;
   }
@@ -330,18 +361,16 @@ function packToTexture(n, center, scale, opacity, color, rot){
 
   SPLATS = n;
   elCount.textContent = n.toLocaleString("es");
-  // frame the model
   cam.target = [(bb0[0]+bb1[0])/2,(bb0[1]+bb1[1])/2,(bb0[2]+bb1[2])/2];
   const diag = Math.hypot(bb1[0]-bb0[0],bb1[1]-bb0[1],bb1[2]-bb0[2]);
   cam.dist = Math.max(diag*0.9, 0.5);
   cam.yaw = 0; cam.pitch = 0.15;
   worker.postMessage({ positions: pos.buffer });
   resize();
-  draw();          // fija lastView antes de pedir la primera ordenación
+  draw();
   requestSort();
 }
 
-/* parse the compact .splat (32 bytes/gaussian) */
 function loadSplat(buf){
   const n = Math.floor(buf.byteLength/32);
   const f = new Float32Array(buf), u = new Uint8Array(buf);
@@ -359,7 +388,6 @@ function loadSplat(buf){
   packToTexture(n, center, scale, opacity, color, rot);
 }
 
-/* parse a 3DGS .ply (binary_little_endian) */
 function loadPly(buf){
   const u8 = new Uint8Array(buf);
   let headEnd = -1;
@@ -406,7 +434,6 @@ function loadArrayBuffer(buf, name){
   } catch(e){ fail("Error al cargar: "+e.message); elLoading.style.display="none"; }
 }
 
-/* fetch the bundled example */
 (async function init(){
   resize();
   try {
@@ -418,26 +445,25 @@ function loadArrayBuffer(buf, name){
     const buf = new Uint8Array(got); let p=0; for(const c of chunks){ buf.set(c,p); p+=c.length; }
     loadArrayBuffer(buf.buffer, "example.splat");
   } catch(e){
-    elLoading.innerHTML = '<div>Arrastra tu <b>.ply</b> o <b>.splat</b> aquí,<br>o usa el botón «Abrir mi modelo».</div>';
+    elLoading.innerHTML = '<div>Arrastra tu <b>.ply</b> o <b>.splat</b> aquí,<br>o usa el botón «Abrir otro modelo».</div>';
   }
 })();
 
-/* file input + drag & drop */
 document.getElementById("file").addEventListener("change", e=>{
   const f=e.target.files[0]; if(!f) return;
   elLoading.style.display="flex"; elLoading.querySelector("div").textContent="Cargando "+f.name+"…";
   const rd=new FileReader(); rd.onload=()=>loadArrayBuffer(rd.result, f.name); rd.readAsArrayBuffer(f);
 });
-addEventListener("dragover", e=>{ e.preventDefault(); elDrop.classList.add("on"); });
+addEventListener("dragover", e=>{ if(currentMode!=="recon") return; e.preventDefault(); elDrop.classList.add("on"); });
 addEventListener("dragleave", e=>{ if(e.relatedTarget===null) elDrop.classList.remove("on"); });
 addEventListener("drop", e=>{
+  if(currentMode!=="recon") return;
   e.preventDefault(); elDrop.classList.remove("on");
   const f=e.dataTransfer.files[0]; if(!f) return;
   elLoading.style.display="flex"; elLoading.querySelector("div").textContent="Cargando "+f.name+"…";
   const rd=new FileReader(); rd.onload=()=>loadArrayBuffer(rd.result, f.name); rd.readAsArrayBuffer(f);
 });
 
-/* ------------------------------------------------------ interaction */
 let dragging=0, lx=0, ly=0;
 canvas.addEventListener("pointerdown", e=>{ dragging=e.button===2?2:1; lx=e.clientX; ly=e.clientY; canvas.setPointerCapture(e.pointerId); pauseAuto(); });
 canvas.addEventListener("pointerup", e=>{ dragging=0; });
@@ -462,14 +488,60 @@ canvas.addEventListener("wheel", e=>{
   draw(); requestSort(); pauseAuto();
 }, {passive:false});
 
-/* auto-giro: gira solo al abrir; se pausa al interactuar y vuelve tras 4 s */
 let autoRotate=true, idleTimer=0;
 function pauseAuto(){ autoRotate=false; clearTimeout(idleTimer); idleTimer=setTimeout(()=>{ autoRotate=true; }, 4000); }
 function tick(){
-  if (autoRotate && SPLATS){ cam.yaw += 0.0035; draw(); requestSort(); }
+  if (currentMode==="recon" && autoRotate && SPLATS){ cam.yaw += 0.0035; draw(); requestSort(); }
   requestAnimationFrame(tick);
 }
 requestAnimationFrame(tick);
+
+/* =================================================================== MODOS */
+const mv = document.getElementById("mv");
+let mvLoaded = false;
+function setMode(mode){
+  currentMode = mode;
+  document.querySelectorAll(".modes button").forEach(b=>b.classList.toggle("active", b.dataset.mode===mode));
+  document.querySelectorAll(".mode").forEach(s=>s.classList.remove("active"));
+  document.getElementById("mode-"+mode).classList.add("active");
+  if (mode==="recon"){ resize(); draw(); requestSort(); }
+  if (mode==="original" && !mvLoaded){ mv.src = "original.glb"; mvLoaded = true; }
+}
+document.querySelectorAll(".modes button").forEach(b=>{
+  b.addEventListener("click", ()=> setMode(b.dataset.mode));
+});
+
+/* =================================================================== GALERÍA + LIGHTBOX */
+const N_PHOTOS = 60;
+const gallery = document.getElementById("gallery");
+for (let i=0;i<N_PHOTOS;i++){
+  const im = document.createElement("img");
+  im.src = `photos/foto_${String(i).padStart(2,"0")}.jpg`;
+  im.loading = "lazy";
+  im.alt = `foto de entrada ${i+1}`;
+  im.addEventListener("click", ()=> openLightbox(i));
+  gallery.appendChild(im);
+}
+const lb = document.getElementById("lightbox");
+const lbImg = document.getElementById("lb-img");
+const lbCap = document.getElementById("lb-cap");
+let lbIndex = 0;
+function openLightbox(i){ lbIndex=i; updateLightbox(); lb.classList.add("on"); }
+function updateLightbox(){
+  lbImg.src = `photos/foto_${String(lbIndex).padStart(2,"0")}.jpg`;
+  lbCap.textContent = `Foto ${lbIndex+1} / ${N_PHOTOS}`;
+}
+function lbStep(d){ lbIndex = (lbIndex + d + N_PHOTOS) % N_PHOTOS; updateLightbox(); }
+document.getElementById("lb-close").addEventListener("click", ()=> lb.classList.remove("on"));
+document.getElementById("lb-prev").addEventListener("click", e=>{ e.stopPropagation(); lbStep(-1); });
+document.getElementById("lb-next").addEventListener("click", e=>{ e.stopPropagation(); lbStep(1); });
+lb.addEventListener("click", e=>{ if(e.target===lb) lb.classList.remove("on"); });
+addEventListener("keydown", e=>{
+  if(!lb.classList.contains("on")) return;
+  if(e.key==="Escape") lb.classList.remove("on");
+  else if(e.key==="ArrowLeft") lbStep(-1);
+  else if(e.key==="ArrowRight") lbStep(1);
+});
 </script>
 </body>
 </html>
