@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://emr81-ua.github.io/">
 <meta name="theme-color" content="#070b12">
 <link rel="icon" href="/favicon.ico">
-<title>Eric Muñoz Rouillion — Computer Engineer</title>
+<title>Eric Muñoz Rouillion · Computer Engineer</title>
 <style>
   :root{
     /* ground / ink — blue-biased neutrals, chosen not defaulted */
@@ -105,11 +105,6 @@
   .btn.primary{background:var(--accent);color:#04120f;border-color:transparent;font-weight:600}
   .btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px color-mix(in srgb,var(--accent) 60%,transparent)}
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-  .hud{position:absolute;left:24px;bottom:20px;z-index:2;font-family:var(--mono);font-size:11px;
-    letter-spacing:.08em;color:var(--faint);display:flex;gap:18px;flex-wrap:wrap}
-  .hud b{color:var(--accent);font-weight:500}
-  @media(max-width:620px){.hud{display:none}}
-
   /* ---------- SECTION SHELL ---------- */
   section{padding:96px 0;border-bottom:1px solid var(--line)}
   .sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:52px;max-width:60ch}
@@ -228,18 +223,12 @@
       <span class="eyebrow" data-i18n="hero.eyebrow">Computer Engineer · Computer Vision</span>
       <h1 data-i18n="hero.h1">Turning pixels into <span class="accent">geometry</span>.</h1>
       <p class="lede" data-i18n="hero.lede">I'm <strong>Eric Muñoz Rouillion</strong>, a <strong>Computer Engineer</strong> with a
-        foundation spanning hardware, systems and software — specialized in
+        foundation spanning hardware, systems and software, specialized in
         <strong>computer vision</strong> and realistic 3D reconstruction with Gaussian / Triangle Splatting.</p>
       <div class="cta">
         <a class="btn primary" href="#work" data-i18n="hero.cta1">View the work →</a>
         <a class="btn ghost" id="cvBtn" href="/assets/files/CV_ERIC_ENG.pdf" data-i18n="hero.cta2">↓ Download CV</a>
       </div>
-    </div>
-    <div class="hud">
-      <span>MODE <b>gaussian_splat</b></span>
-      <span>POINTS <b id="ptcount">—</b></span>
-      <span>DEPTH <b>z-colormap</b></span>
-      <span>RENDER <b>realtime</b></span>
     </div>
   </header>
 
@@ -248,25 +237,25 @@
     <div class="shell">
       <div class="sec-head">
         <span class="eyebrow" data-i18n="focus.eyebrow">Where I focus</span>
-        <h2 data-i18n="focus.h2">A computer engineer, with a specialty.</h2>
-        <p data-i18n="focus.p">My foundation is broad — hardware, systems and software — and I've pointed it at
+        <h2 data-i18n="focus.h2">What I work on.</h2>
+        <p data-i18n="focus.p">My foundation spans hardware, systems and software, and I've pointed it at
           computer vision: capturing reality with cameras and rebuilding it as editable, photorealistic 3D.</p>
       </div>
       <div class="pillars">
         <div class="pillar"><span class="bar"></span>
           <span class="idx">01</span>
           <h3 data-i18n="p1.h3">Computer Vision & 3D</h3>
-          <p data-i18n="p1.p">Structure-from-Motion pipelines (COLMAP) and Gaussian / Triangle Splatting that reconstruct real scenes from ordinary images — my specialty.</p>
+          <p data-i18n="p1.p">Structure-from-Motion pipelines (COLMAP) and Gaussian / Triangle Splatting that reconstruct real scenes from ordinary images. My specialty.</p>
         </div>
         <div class="pillar"><span class="bar"></span>
           <span class="idx">02</span>
           <h3 data-i18n="p2.h3">Systems & Hardware</h3>
-          <p data-i18n="p2.p">A Computer Engineering foundation specialized in hardware — comfortable from the GPU up to the application layer.</p>
+          <p data-i18n="p2.p">A Computer Engineering foundation specialized in hardware, comfortable from the GPU up to the application layer.</p>
         </div>
         <div class="pillar"><span class="bar"></span>
           <span class="idx">03</span>
           <h3 data-i18n="p3.h3">Software & Algorithms</h3>
-          <p data-i18n="p3.p">From C++ AI and search algorithms to full data pipelines and tools — I like building things end to end and solving the hard technical parts.</p>
+          <p data-i18n="p3.p">From C++ AI and search algorithms to full data pipelines and tools. I like building things end to end and solving the hard technical parts.</p>
         </div>
       </div>
     </div>
@@ -286,7 +275,7 @@
           <span class="tag-flag" data-i18n="flag.tag">◆ Final degree thesis · Flagship</span>
           <h3 data-i18n="flag.h3">Realistic 3D Reconstruction with Triangle Splatting</h3>
           <p data-i18n="flag.p">An end-to-end 2D→3D pipeline that reconstructs real objects and scenes from images and
-            renders them photorealistically using Triangle Splatting — bridging classic photogrammetry
+            renders them photorealistically using Triangle Splatting, bridging classic photogrammetry
             (COLMAP) with modern differentiable rendering.</p>
           <div class="techs">
             <span class="chip">Python</span><span class="chip">Triangle Splatting</span>
@@ -309,7 +298,7 @@
             <span class="chip">C++</span><span class="chip">SFML</span>
             <span class="chip">Minimax</span><span class="chip">Alpha-Beta</span>
           </div>
-          <a class="repo-link" href="https://github.com/emr81-ua/Connect4">→ github.com/emr81-ua/Connect4</a>
+          <span class="repo-link private" data-i18n="c4.repo">🔒 Private repository</span>
         </div>
 
         <div class="card">
@@ -342,18 +331,18 @@
     <div class="shell">
       <div class="sec-head">
         <span class="eyebrow" data-i18n="about.eyebrow">About</span>
-        <h2 data-i18n="about.h2">Engineer first, specialist by choice.</h2>
+        <h2 data-i18n="about.h2">From prototypes to 3D reconstruction.</h2>
       </div>
       <div class="about-grid">
         <div>
           <p data-i18n="about.p1">I'm a <strong>Computer Engineer</strong> specialized in hardware systems.
-            That broad foundation is what I lean on — and lately I've pointed it firmly at
+            That broad foundation is what I lean on, and lately I've pointed it firmly at
             <strong>computer vision and 3D reconstruction</strong>.</p>
           <p data-i18n="about.p2">What started as building small programs and prototypes turned into a fascination with how machines
-            <em>see</em> — how a handful of photographs can become a faithful, explorable 3D model. My final
+            <em>see</em>: how a handful of photographs can become a faithful, explorable 3D model. My final
             degree thesis pushes that idea with <strong>Triangle Splatting</strong>, and I love owning the whole
             pipeline: capture, calibration, reconstruction, rendering and the GPU work underneath.</p>
-          <p data-i18n="about.p3">I'm curious across the stack — graphics, geometry, AI and the low-level systems that make it fast —
+          <p data-i18n="about.p3">I'm curious across the stack: graphics, geometry, AI and the low-level systems that make it fast,
             and always looking for the next hard technical problem to solve.</p>
           <div class="skillset">
             <h4 data-i18n="toolbox.h4">// Toolbox</h4>
@@ -383,7 +372,7 @@
     <div class="shell">
       <span class="eyebrow" style="justify-content:center" data-i18n="contact.eyebrow">Get in touch</span>
       <h2 data-i18n="contact.h2">Let's build something together.</h2>
-      <p data-i18n="contact.p">Whether it's a computer-vision role, an engineering challenge or a collaboration — my inbox is open.</p>
+      <p data-i18n="contact.p">Whether it's a computer-vision role, an engineering challenge or a collaboration, my inbox is open.</p>
       <div class="socials">
         <a class="soc" href="https://github.com/emr81-ua" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.4-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.28 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
         <a class="soc" href="https://linkedin.com/in/eric-muñoz-rouillion-3a303a1b2" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.55V9h3.57v11.45ZM22.22 0H1.77C.8 0 0 .78 0 1.74v20.5C0 23.2.8 24 1.77 24h20.45c.98 0 1.78-.8 1.78-1.76V1.74C24 .78 23.2 0 22.22 0Z"/></svg></a>
@@ -415,36 +404,37 @@
     'nav.contact':'Contacto',
     'hero.eyebrow':'Ingeniero Informático · Visión por Computador',
     'hero.h1':'Convirtiendo píxeles en <span class="accent">geometría</span>.',
-    'hero.lede':'Soy <strong>Eric Muñoz Rouillion</strong>, <strong>Ingeniero Informático</strong> con una base que abarca hardware, sistemas y software — especializado en <strong>visión por computador</strong> y reconstrucción 3D realista con Gaussian / Triangle Splatting.',
+    'hero.lede':'Soy <strong>Eric Muñoz Rouillion</strong>, <strong>Ingeniero Informático</strong> con una base que abarca hardware, sistemas y software, especializado en <strong>visión por computador</strong> y reconstrucción 3D realista con Gaussian / Triangle Splatting.',
     'hero.cta1':'Ver proyectos →',
     'hero.cta2':'↓ Descargar CV',
     'focus.eyebrow':'En qué me enfoco',
-    'focus.h2':'Un ingeniero informático, con una especialidad.',
-    'focus.p':'Mi base es amplia — hardware, sistemas y software — y la he orientado hacia la visión por computador: capturar la realidad con cámaras y reconstruirla como 3D fotorrealista y editable.',
+    'focus.h2':'En qué trabajo.',
+    'focus.p':'Mi base abarca hardware, sistemas y software, y la he orientado hacia la visión por computador: capturar la realidad con cámaras y reconstruirla como 3D fotorrealista y editable.',
     'p1.h3':'Visión por Computador y 3D',
-    'p1.p':'Pipelines de Structure-from-Motion (COLMAP) y Gaussian / Triangle Splatting que reconstruyen escenas reales a partir de imágenes corrientes — mi especialidad.',
+    'p1.p':'Pipelines de Structure-from-Motion (COLMAP) y Gaussian / Triangle Splatting que reconstruyen escenas reales a partir de imágenes corrientes. Mi especialidad.',
     'p2.h3':'Sistemas y Hardware',
-    'p2.p':'Una base de Ingeniería Informática especializada en hardware — cómodo desde la GPU hasta la capa de aplicación.',
+    'p2.p':'Una base de Ingeniería Informática especializada en hardware, cómodo desde la GPU hasta la capa de aplicación.',
     'p3.h3':'Software y Algoritmos',
-    'p3.p':'Desde IA y algoritmos de búsqueda en C++ hasta pipelines de datos y herramientas completas — me gusta construir de principio a fin y resolver las partes técnicas difíciles.',
+    'p3.p':'Desde IA y algoritmos de búsqueda en C++ hasta pipelines de datos y herramientas completas. Me gusta construir de principio a fin y resolver las partes técnicas difíciles.',
     'work.eyebrow':'Trabajo seleccionado',
     'work.h2':'Proyectos y experimentos.',
     'flag.tag':'◆ Trabajo de Fin de Grado · Destacado',
     'flag.h3':'Reconstrucción 3D realista con Triangle Splatting',
-    'flag.p':'Un pipeline 2D→3D completo que reconstruye objetos y escenas reales a partir de imágenes y los renderiza de forma fotorrealista con Triangle Splatting — uniendo la fotogrametría clásica (COLMAP) con el renderizado diferenciable moderno.',
+    'flag.p':'Un pipeline 2D→3D completo que reconstruye objetos y escenas reales a partir de imágenes y los renderiza de forma fotorrealista con Triangle Splatting, uniendo la fotogrametría clásica (COLMAP) con el renderizado diferenciable moderno.',
     'flag.repo':'→ github.com/emr81-ua/3d-gaussian-splatting-reconstruction',
     'flag.demo':'▶ Demo 3D en vivo · ábrela en tu navegador',
     'c4.kind':'Inteligencia Artificial · C++',
     'c4.p':'Un motor de Conecta 4 con una IA Minimax con poda alfa-beta e interfaz gráfica en SFML.',
+    'c4.repo':'🔒 Repositorio privado',
     'kn.kind':'Videojuegos · Godot',
     'kn.p':'Prototipo de acción roguelite con combate de espada basado en físicas y controlado por gestos del ratón.',
     'port.h3':'Este Portfolio',
     'port.p':'Un punto central que documenta mis proyectos y experimentos en visión por computador y programación.',
     'about.eyebrow':'Sobre mí',
-    'about.h2':'Ingeniero ante todo, especialista por elección.',
-    'about.p1':'Soy <strong>Ingeniero Informático</strong> especializado en sistemas hardware. Esa base amplia es en la que me apoyo — y últimamente la he dirigido de lleno hacia la <strong>visión por computador y la reconstrucción 3D</strong>.',
-    'about.p2':'Lo que empezó como construir pequeños programas y prototipos se convirtió en una fascinación por cómo <em>ven</em> las máquinas — cómo un puñado de fotografías puede convertirse en un modelo 3D fiel y explorable. Mi Trabajo de Fin de Grado lleva esa idea más allá con <strong>Triangle Splatting</strong>, y me encanta dominar todo el pipeline: captura, calibración, reconstrucción, renderizado y el trabajo de GPU por debajo.',
-    'about.p3':'Soy curioso en toda la pila — gráficos, geometría, IA y los sistemas de bajo nivel que lo hacen rápido — y siempre busco el siguiente problema técnico difícil que resolver.',
+    'about.h2':'De los prototipos a la reconstrucción 3D.',
+    'about.p1':'Soy <strong>Ingeniero Informático</strong> especializado en sistemas hardware. Esa base amplia es en la que me apoyo, y últimamente la he dirigido de lleno hacia la <strong>visión por computador y la reconstrucción 3D</strong>.',
+    'about.p2':'Lo que empezó como construir pequeños programas y prototipos se convirtió en una fascinación por cómo <em>ven</em> las máquinas: cómo un puñado de fotografías puede convertirse en un modelo 3D fiel y explorable. Mi Trabajo de Fin de Grado lleva esa idea más allá con <strong>Triangle Splatting</strong>, y me encanta dominar todo el pipeline: captura, calibración, reconstrucción, renderizado y el trabajo de GPU por debajo.',
+    'about.p3':'Soy curioso en toda la pila: gráficos, geometría, IA y los sistemas de bajo nivel que lo hacen rápido, y siempre busco el siguiente problema técnico difícil que resolver.',
     'toolbox.h4':'// Herramientas',
     'f.role.k':'ROL','f.role.v':'Ingeniero Informático',
     'f.focus.k':'FOCO','f.focus.v':'Visión por Computador · Reconstrucción 3D',
@@ -454,10 +444,10 @@
     'f.status.k':'ESTADO','f.status.v':'Abierto a oportunidades',
     'contact.eyebrow':'Contacto',
     'contact.h2':'Construyamos algo juntos.',
-    'contact.p':'Ya sea un puesto de visión por computador, un reto de ingeniería o una colaboración — mi bandeja está abierta.',
+    'contact.p':'Ya sea un puesto de visión por computador, un reto de ingeniería o una colaboración, mi bandeja está abierta.',
     'footer.built':'Hecho con Jekyll · GitHub Pages · <b style="color:var(--accent)">reconstruido en tiempo real</b>'
   };
-  const TITLES = {en:'Eric Muñoz Rouillion — Computer Engineer', es:'Eric Muñoz Rouillion — Ingeniero Informático'};
+  const TITLES = {en:'Eric Muñoz Rouillion · Computer Engineer', es:'Eric Muñoz Rouillion · Ingeniero Informático'};
   const CV = {en:'/assets/files/CV_ERIC_ENG.pdf', es:'/assets/files/CV_ERIC.pdf'};
 
   const nodes = document.querySelectorAll('[data-i18n]');
@@ -564,8 +554,7 @@
   }
 
   const heroCanvas=document.getElementById('cloud');
-  const c1=cloud(heroCanvas, 1600, {cx:0.72, cy:0.46, scale:0.5, psize:1.6});
-  document.getElementById('ptcount').textContent=c1.count.toLocaleString();
+  cloud(heroCanvas, 1600, {cx:0.72, cy:0.46, scale:0.5, psize:1.6});
   cloud(document.getElementById('splatMini'), 900, {cx:0.5, cy:0.5, scale:0.5, psize:1.25});
 
   // smooth anchor scroll
